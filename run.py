@@ -11,9 +11,11 @@ class Board:
         self.ships = []
         self.guesses = []
 
+        # guess + insert ships
+
 board = []    
 
-for _ in range(5):
+for i in range(5):
     board.append(["O"] * 5)
 
 def print_board(board):
@@ -22,7 +24,11 @@ def print_board(board):
 
 # def populate_board()
 
+# check_correct
+
 # def computer_guess()
+
+# def next_round
     
 def start_game():
 
@@ -37,5 +43,8 @@ def start_game():
     print("Computer's Board:")
     print_board(board)
     print("+" * 35)
+
+    computer_board = Board(board_size, num_ships, "Computer", type="computer")
+    player_board = Board(board_size, num_ships, player_name, type="player")
     
 start_game()
