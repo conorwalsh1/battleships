@@ -31,22 +31,27 @@ board = []
 for i in range(5):
     board.append(["O"] * 5)
 
-def print_player_board(board):
+def player_board(board):
     for row in board:
         print(" ".join(row))
 
-def print_computer_board(board):
+def computer_board(board):
     for row in board:
         print(" ".join(row))
-
-x = randint(0, len(board) - 1)
-y = randint(0, len(board) - 1)
 
 # populate board with ships
 
 def populate_board():
-    player_ships = [(x, y), (x, y), (x, y), (x, y)]
-    comp_ships = [(x, y), (x, y), (x, y), (x, y)]
+    for i in range(4):
+        while True:
+            x = randint(0, len(board) - 1)
+            y = randint(0, len(board) - 1) 
+
+            if player_board[y][x] == 'taken':
+                ships = 1
+                break
+            else:
+                continue
 
 # random coordinates
 
@@ -56,7 +61,19 @@ def random_row(board):
 def random_column(board):
     randint(0, len(board) - 1)
 
-# def player_guess()
+# Player Guess
+
+def guess(self, x, y):
+    self.guesses.append((x, y))
+    self.board[x][y] = "X"
+
+    if guess_row == player_board[x] and guess_col == player_board[y]:
+        self.board[x][y] = "$"
+        return "BOOM! Good hit."
+    else:
+        return "MISS. Try again."
+
+
 
 # def computer_guess()
 
@@ -75,10 +92,13 @@ def start_game():
     print("Best of luck comrade, you're going to need it out there.")
     print("+" * 35)
     print(f"{player_name}'s Board:")
-    print_player_board(board)
+    player_board(board)
     print("Computer's Board:")
-    print_computer_board(board)
+    computer_board(board)
     print("+" * 35)
+    populate_board()
+    guess_row = int(input("Guess Row: "))
+    guess_col = int(input("Guess Column: "))
 
     # computer_board = Board(board_size, num_ships, "Computer", type="computer")
     # player_board = Board(board_size, num_ships, player_name, type="player")
