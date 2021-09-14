@@ -31,27 +31,31 @@ board = []
 for i in range(5):
     board.append(["O"] * 5)
 
-def player_board(board):
+def print_player_board(board):
     for row in board:
         print(" ".join(row))
 
-def computer_board(board):
+def print_computer_board(board):
     for row in board:
         print(" ".join(row))
 
 # populate board with ships
 
-def populate_board():
-    for i in range(4):
-        while True:
-            x = randint(0, len(board) - 1)
-            y = randint(0, len(board) - 1) 
+# def populate_board():
+#     for i in range(4):
+#         while True:
+#             x = randint(0, len(board) - 1)
+#             y = randint(0, len(board) - 1) 
 
-            if player_board[y][x] == 'taken':
-                ships = 1
-                break
-            else:
-                continue
+#             if board[y][x] == 'taken':
+#                 ships = 1
+#                 break
+#             else:
+#                 continue
+
+ship_row = randint(0, len(board) - 1)
+ship_col = randint(0, len(board) - 1)
+
 
 # random coordinates
 
@@ -63,15 +67,31 @@ def random_column(board):
 
 # Player Guess
 
-def guess(self, x, y):
-    self.guesses.append((x, y))
-    self.board[x][y] = "X"
+# def guess(self, x, y):
+#     self.guesses.append((x, y))
+#     self.board[x][y] = "X"
 
-    if guess_row == player_board[x] and guess_col == player_board[y]:
-        self.board[x][y] = "$"
-        return "BOOM! Good hit."
+#     if guess_row == board[x] and guess_col == board[y]:
+#         self.board[x][y] = "$"
+#         return "BOOM! Good hit."
+#     else:
+#         return "MISS. Try again."
+def guess():
+    guess_row = int(input("Guess Row: "))
+    guess_col = int(input("Guess Column: "))
+    if guess_row >= 5 or guess_col >= 5:
+        print("Please choose a number between 0 and 4")
+    if guess_row == ship_row and guess_col == ship_col:
+        print("BOOM! Good hit.")
     else:
-        return "MISS. Try again."
+       print("MISS. Try again.") 
+
+    
+
+#         self.board[x][y] = "$"
+#         return "BOOM! Good hit."
+#     else:
+#         return "MISS. Try again."
 
 
 
@@ -92,13 +112,12 @@ def start_game():
     print("Best of luck comrade, you're going to need it out there.")
     print("+" * 35)
     print(f"{player_name}'s Board:")
-    player_board(board)
+    print_player_board(board)
     print("Computer's Board:")
-    computer_board(board)
+    print_computer_board(board)
     print("+" * 35)
-    populate_board()
-    guess_row = int(input("Guess Row: "))
-    guess_col = int(input("Guess Column: "))
+    guess()
+    
 
     # computer_board = Board(board_size, num_ships, "Computer", type="computer")
     # player_board = Board(board_size, num_ships, player_name, type="player")
