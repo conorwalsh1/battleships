@@ -18,7 +18,11 @@ board = []
 for i in range(5):
     board.append(["O"] * 5)
 
-def print_board(board):
+def print_player_board(board):
+    for row in board:
+        print(" ".join(row))
+
+def print_computer_board(board):
     for row in board:
         print(" ".join(row))
 
@@ -36,12 +40,14 @@ def start_game():
     board_size = 5
     print("Welcome to Battleships. Are you ready to go to war? Enlist below if you are.")
     player_name = input("Enter your name soldier: \n")
-    print(f"Glad to have you aboard {player_name}. The board size is {board_size} x {board_size}, you have {num_ships} ships to protect and {num_ships} ships to eliminate.\nBest of luck comrade, you're going to need it out there.")
+    print(f"Glad to have you aboard {player_name}. The board size is {board_size} x {board_size}, you have {num_ships} ships to protect and {num_ships} ships to eliminate.")
+    print(f"When you are prompted {player_name}, enter which row and then which column you would like to strike.\nThe first coordinate on the board will be row: 0, column: 0. The last coordinate on the board will be row: 4, column: 4.")
+    print("Best of luck comrade, you're going to need it out there.")
     print("+" * 35)
     print(f"{player_name}'s Board:")
-    print_board(board)
+    print_player_board(board)
     print("Computer's Board:")
-    print_board(board)
+    print_computer_board(board)
     print("+" * 35)
 
     computer_board = Board(board_size, num_ships, "Computer", type="computer")
