@@ -28,6 +28,20 @@ def print_computer_board(board):
 
 # def populate_board()
 
+# random coordinates
+
+def random_row(board):
+    randint(0, len(board) - 1)
+
+def random_row(board):
+    randint(0, len(board) - 1)
+
+
+# ship_row = randint(0, len(board) - 1)
+# ship_col = randint(0, len(board) - 1)
+
+# board[ship_row][ship_col] = 'X'
+
 # check_correct
 
 # def computer_guess()
@@ -50,7 +64,7 @@ def start_game():
     print_computer_board(board)
     print("+" * 35)
 
-    computer_board = Board(board_size, num_ships, "Computer", type="computer")
-    player_board = Board(board_size, num_ships, player_name, type="player")
+    # computer_board = Board(board_size, num_ships, "Computer", type="computer")
+    # player_board = Board(board_size, num_ships, player_name, type="player")
     
 start_game()
