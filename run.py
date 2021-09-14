@@ -11,7 +11,20 @@ class Board:
         self.ships = []
         self.guesses = []
 
-        # guess + insert ships
+    # def guess(self, x, y):
+    #     self.guesses.append((x,y))
+    #     self.board[x][y] = "X"
+
+    #     if (x,y) in self.ships:
+    #         self.board[x][y] = "$"
+    #         return "BOOM"
+    #     else:
+    #         return "MISS"
+
+
+    # guess + insert ships
+
+# create boards
 
 board = []    
 
@@ -26,25 +39,28 @@ def print_computer_board(board):
     for row in board:
         print(" ".join(row))
 
-# def populate_board()
+x = randint(0, len(board) - 1)
+y = randint(0, len(board) - 1)
+
+# populate board with ships
+
+def populate_board():
+    player_ships = [(x, y), (x, y), (x, y), (x, y)]
+    comp_ships = [(x, y), (x, y), (x, y), (x, y)]
 
 # random coordinates
 
 def random_row(board):
     randint(0, len(board) - 1)
 
-def random_row(board):
+def random_column(board):
     randint(0, len(board) - 1)
 
-
-# ship_row = randint(0, len(board) - 1)
-# ship_col = randint(0, len(board) - 1)
-
-# board[ship_row][ship_col] = 'X'
-
-# check_correct
+# def player_guess()
 
 # def computer_guess()
+
+# def check_correct
 
 # def next_round
     
