@@ -39,8 +39,6 @@ def create_board():
     
     return board
 
-
-
 def print_board(board):
     for row in board:
         print(" ".join(row))
@@ -63,8 +61,6 @@ def print_board(board):
 def get_random_coordinates(board_size):
     ship_row = randint(0, board_size - 1)
     ship_col = randint(0, board_size - 1)
-    print(ship_row)
-    print(ship_col)
     return ship_row, ship_col
 
 
@@ -80,15 +76,6 @@ def random_column(board):
 
 # Player Guess
 
-# def guess(self, x, y):
-#     self.guesses.append((x, y))
-#     self.board[x][y] = "X"
-
-#     if guess_row == board[x] and guess_col == board[y]:
-#         self.board[x][y] = "$"
-#         return "BOOM! Good hit."
-#     else:
-#         return "MISS. Try again."
 def guess():
     guess_row = int(input("Guess Row: "))
     guess_col = int(input("Guess Column: "))
@@ -112,31 +99,28 @@ def start_game():
     num_ships = 2
     global board_size
     board_size = 3
+    global player_name
 
     print("Welcome to Battleships. Are you ready to go to war? Enlist below if you are.")
     player_name = input("Enter your name soldier: \n")
     print("\n")
     print(f"Glad to have you aboard {player_name}. The board size is {board_size} x {board_size}, you have {num_ships} ships to protect and {num_ships} ships to eliminate.")
-    print(f"When you are prompted, enter which row and then which column you would like to strike.\nThe first coordinate on the board will be row: 0, column: 0. The last coordinate on the board will be row: 4, column: 4.")
+    print(f"When you are prompted, enter which row and then which column you would like to strike.\nThe first coordinate on the board will be row: 0, column: 0. The last coordinate on the board will be row: {board_size - 1}, column: {board_size - 1}.")
     print("Best of luck comrade, you're going to need it out there.")
     print("+" * 35)
-    print(f"{player_name}'s Board:")
-    print("Computer's Board:")
-    print("+" * 35)
-    
-    
 
-    # computer_board = Board(board_size, num_ships, "Computer", type="computer")
-    # player_board = Board(board_size, num_ships, player_name, type="player")
 def main():
 
     start_game()
     get_random_coordinates(board_size)
     computer_board = create_board()
     player_board = create_board()
-    print_board(computer_board)
-    print("\n")
+    computer_board = create_board()
+    print(f"{player_name}'s Board: ")
     print_board(player_board)
+    print("Computer's Board: ")
+    print_board(computer_board)
+    print("+" * 35)
     guess()
 
 main()
