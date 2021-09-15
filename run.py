@@ -27,6 +27,7 @@ def create_comp_board():
         comp_board.append(["O"] * board_size)
 
     for i in range(num_ships):
+        global place
         place = get_random_coordinates(board_size)
         x = place[0]
         y = place[1]
@@ -76,7 +77,7 @@ def player_guess():
         else:
             continue
 
-    if guess_row and guess_col == '@':
+    if guess_row == place[0] and guess_col == place[1]:
         print("BOOM! Good hit.")
         board[guess_row][guess_col] = '*'
     else:
@@ -94,15 +95,15 @@ def computer_guess():
     # comp_guess[x][y] = 'X'
 
     print(f"Computer has guessed Row, Column: {comp_guess}")
-    if comp_guess == ship_row and ship_col:
+    if comp_guess == ship_row and comp_guess == ship_col:
         print("WE TOOK A HIT!!! Computer has guessed correctly")
-        board[comp_guess] = '*'
+        comp_board[ship_row][ship_col] = '*'
     else:
         print("PHEW. Computer has guessed incorrectly.")
-        comp_board.append('L')
+        comp_board.append('$')
     print(f"{player_name} has blank ships remaining.")
     print("Computer has blank ships remaining.") 
-    nxt_round = input("To proceed to the next round, press 'y' key: ")
+    nxt_round = input("Press any key to move on to the next round: ")
     next_round()
 
     
