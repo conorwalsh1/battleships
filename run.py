@@ -11,16 +11,30 @@ def create_board():
         board.append(["O"] * board_size)
 
     for i in range(num_ships):
-        global x
-        global y
         place = get_random_coordinates(board_size)
         x = place[0]
         y = place[1]
         board[x][y] = '@'
 
-    print(board)
-    
     return board
+
+def create_comp_board():
+
+    global comp_board
+    comp_board = []    
+
+    for i in range(board_size):
+        comp_board.append(["O"] * board_size)
+
+    for i in range(num_ships):
+        place = get_random_coordinates(board_size)
+        x = place[0]
+        y = place[1]
+        comp_board[x][y] = 'O'
+
+    return comp_board
+
+
 
 
 def print_board(board):
@@ -33,7 +47,6 @@ def get_random_coordinates(board_size):
     global ship_col
     ship_col = randint(0, board_size - 1)
     return ship_row, ship_col
-
 
 # Player Guess
 
@@ -63,34 +76,38 @@ def player_guess():
         else:
             continue
 
-    if guess_row and guess_col == '0':
+    # global player_board
+    # player_board = [guess_row][guess_col]
+
+    if guess_row == ship_row and guess_col == ship_col:
         print("BOOM! Good hit.")
+        board[guess_row][guess_col] = '*'
     else:
         print("MISS. Reload the cannons and try again on the next round.") 
-
-    # board.append[guess_row][guess_col] = 'X'
+        board[guess_row][guess_col] = 'X'
 
 
 # Computer Guess
 
 def computer_guess():
+    
     comp_guess = get_random_coordinates(board_size)
+
     print(f"Computer has guessed Row, Column: {comp_guess}")
-    if comp_guess == '@':
+    if comp_guess == ship_row and ship_col:
         print("WE TOOK A HIT!!! Computer has guessed correctly")
+        board[comp_guess] = '*'
     else:
         print("PHEW. Computer has guessed incorrectly.")
+        board.append('X')
     print(f"{player_name} has blank ships remaining.")
     print("Computer has blank ships remaining.") 
     next_round = input("To proceed to the next round, press 'y' key: ")
-    while num_ships > 0:
-        next_round()
+    next_round()
 
     
 def next_round():
     print("+" * 35)
-    player_board = create_board()
-    computer_board = create_board()
     print(f"{player_name}'s Board: ")
     print_board(player_board)
     print("Computer's Board: ")
@@ -120,7 +137,7 @@ def main():
     start_game()
     get_random_coordinates(board_size)
     player_board = create_board()
-    computer_board = create_board()
+    computer_board = create_comp_board()
     print(f"{player_name}'s Board: ")
     print_board(player_board)
     print("Computer's Board: ")
