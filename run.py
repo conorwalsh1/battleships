@@ -30,7 +30,7 @@ def create_comp_board():
         place = get_random_coordinates(board_size)
         x = place[0]
         y = place[1]
-        comp_board[x][y] = 'O'
+        comp_board[x][y] = '2'
 
     return comp_board
 
@@ -76,15 +76,12 @@ def player_guess():
         else:
             continue
 
-    # global player_board
-    # player_board = [guess_row][guess_col]
-
-    if guess_row == ship_row and guess_col == ship_col:
+    if guess_row and guess_col == '@':
         print("BOOM! Good hit.")
         board[guess_row][guess_col] = '*'
     else:
         print("MISS. Reload the cannons and try again on the next round.") 
-        board[guess_row][guess_col] = 'X'
+        board[guess_row][guess_col] = '$'
 
 
 # Computer Guess
@@ -92,6 +89,9 @@ def player_guess():
 def computer_guess():
     
     comp_guess = get_random_coordinates(board_size)
+    # x = comp_guess[0]
+    # y = comp_guess[1]
+    # comp_guess[x][y] = 'X'
 
     print(f"Computer has guessed Row, Column: {comp_guess}")
     if comp_guess == ship_row and ship_col:
@@ -99,19 +99,19 @@ def computer_guess():
         board[comp_guess] = '*'
     else:
         print("PHEW. Computer has guessed incorrectly.")
-        board.append('X')
+        comp_board.append('L')
     print(f"{player_name} has blank ships remaining.")
     print("Computer has blank ships remaining.") 
-    next_round = input("To proceed to the next round, press 'y' key: ")
+    nxt_round = input("To proceed to the next round, press 'y' key: ")
     next_round()
 
     
 def next_round():
     print("+" * 35)
     print(f"{player_name}'s Board: ")
-    print_board(player_board)
+    print_board(board)
     print("Computer's Board: ")
-    print_board(computer_board)
+    print_board(comp_board)
     print("+" * 35)
     player_guess()
     computer_guess()
