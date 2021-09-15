@@ -14,7 +14,7 @@ def create_board():
         place = get_random_coordinates(board_size)
         x = place[0]
         y = place[1]
-        board[x][y] = '@'
+        board[x][y] = 'O'
 
     return board
 
@@ -31,7 +31,7 @@ def create_comp_board():
         place = get_random_coordinates(board_size)
         x = place[0]
         y = place[1]
-        comp_board[x][y] = '2'
+        comp_board[x][y] = '@'
 
     return comp_board
 
@@ -79,28 +79,26 @@ def player_guess():
 
     if guess_row == place[0] and guess_col == place[1]:
         print("BOOM! Good hit.")
-        board[guess_row][guess_col] = '*'
+        board[guess_row][guess_col] = '$'
     else:
         print("MISS. Reload the cannons and try again on the next round.") 
-        board[guess_row][guess_col] = '$'
+        board[guess_row][guess_col] = 'X'
 
 
 # Computer Guess
 
 def computer_guess():
     
-    comp_guess = get_random_coordinates(board_size)
-    # x = comp_guess[0]
-    # y = comp_guess[1]
-    # comp_guess[x][y] = 'X'
+    comp_guess_row = randint(0, board_size - 1)
+    comp_guess_col = randint(0, board_size - 1)
 
-    print(f"Computer has guessed Row, Column: {comp_guess}")
-    if comp_guess == ship_row and comp_guess == ship_col:
+    print(f"Computer has guessed Row: {comp_guess_row}, Column: {comp_guess_col} ")
+    if comp_guess_row == ship_row and comp_guess_col == ship_col:
         print("WE TOOK A HIT!!! Computer has guessed correctly")
-        comp_board[ship_row][ship_col] = '*'
+        comp_board[comp_guess_row][comp_guess_col] = '$'
     else:
         print("PHEW. Computer has guessed incorrectly.")
-        comp_board.append('$')
+        comp_board[comp_guess_row][comp_guess_col] = 'X'
     print(f"{player_name} has blank ships remaining.")
     print("Computer has blank ships remaining.") 
     nxt_round = input("Press any key to move on to the next round: ")
@@ -109,9 +107,9 @@ def computer_guess():
     
 def next_round():
     print("+" * 35)
-    print(f"{player_name}'s Board: ")
-    print_board(board)
     print("Computer's Board: ")
+    print_board(board)
+    print(f"{player_name}'s Board: ")
     print_board(comp_board)
     print("+" * 35)
     player_guess()
@@ -120,9 +118,9 @@ def next_round():
 def start_game():
 
     global num_ships
-    num_ships = 3
+    num_ships = 5
     global board_size
-    board_size = 3
+    board_size = 5
     global player_name
 
     print("Welcome to Battleships. Are you ready to go to war? Enlist below if you are.")
@@ -131,6 +129,11 @@ def start_game():
     print(f"Glad to have you aboard {player_name}. The board size is {board_size} x {board_size}, you have {num_ships} ships to protect and {num_ships} ships to eliminate.")
     print(f"When you are prompted, enter which row and then which column you would like to strike.\nThe first coordinate on the board will be row: 0, column: 0. The last coordinate on the board will be row: {board_size - 1}, column: {board_size - 1}.")
     print("Best of luck comrade, you're going to need it out there.")
+    print("Map Legend:")
+    print("O = Unchecked Spaces")
+    print("X = Checked Spaces")
+    print("$ = Confirmed Hit")
+    print("@ = Your Remaining Ships")
     print("+" * 35)
 
 def main():
@@ -139,9 +142,9 @@ def main():
     get_random_coordinates(board_size)
     player_board = create_board()
     computer_board = create_comp_board()
-    print(f"{player_name}'s Board: ")
-    print_board(player_board)
     print("Computer's Board: ")
+    print_board(player_board)
+    print(f"{player_name}'s Board: ")
     print_board(computer_board)
     print("+" * 35)
     player_guess()
