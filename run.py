@@ -17,8 +17,11 @@ def create_board():
         x = place[0]
         y = place[1]
         board[x][y] = '@'
+
+    print(board)
     
     return board
+
 
 def print_board(board):
     for row in board:
@@ -60,7 +63,7 @@ def player_guess():
         else:
             continue
 
-    if guess_row == x and guess_col == y:
+    if guess_row and guess_col == '0':
         print("BOOM! Good hit.")
     else:
         print("MISS. Reload the cannons and try again on the next round.") 
@@ -73,14 +76,14 @@ def player_guess():
 def computer_guess():
     comp_guess = get_random_coordinates(board_size)
     print(f"Computer has guessed Row, Column: {comp_guess}")
-    if comp_guess == ship_row and ship_col:
+    if comp_guess == '@':
         print("WE TOOK A HIT!!! Computer has guessed correctly")
     else:
         print("PHEW. Computer has guessed incorrectly.")
     print(f"{player_name} has blank ships remaining.")
     print("Computer has blank ships remaining.") 
     next_round = input("To proceed to the next round, press 'y' key: ")
-    while input == 'y':
+    while num_ships > 0:
         next_round()
 
     
