@@ -1,4 +1,6 @@
-from random import randint 
+from random import randint
+
+guessed_previously = []
 
 # create boards
 
@@ -6,6 +8,9 @@ def create_board():
 
     global board
     board = []    
+
+    global comp_ships_remaining
+    comp_ships_remaining = 2
 
     for i in range(board_size):
         board.append(["O"] * board_size)
@@ -21,7 +26,10 @@ def create_board():
 def create_player_board():
 
     global player_board
-    player_board = []    
+    player_board = []   
+
+    global player_ships_remaining
+    player_ships_remaining = 2
 
     for i in range(board_size):
         player_board.append(["O"] * board_size)
@@ -34,9 +42,6 @@ def create_player_board():
         player_board[x][y] = '@'
 
     return player_board
-
-
-
 
 def print_board(board):
     for row in board:
@@ -53,8 +58,7 @@ def get_random_coordinates(board_size):
 
 def player_guess():
 
-    ships_remaining = 5
-    ships_remaining = ships_remaining - 1
+    global player_ships_remaining
     
     guess_row = None
     while True:
@@ -82,7 +86,8 @@ def player_guess():
             continue
 
     if guess_row == place[0] and guess_col == place[1]:
-        print(f"BOOM! Good hit! Computer has {ships_remaining} ships remaining. Onwards comrade!")
+        player_ships_remaining -= 1
+        print(f"BOOM! Good hit! Computer has {player_ships_remaining} ships remaining. Onwards comrade!")
         board[guess_row][guess_col] = '$'
     else:
         print("MISS. Reload the cannons and try again on the next round.") 
@@ -93,33 +98,30 @@ def player_guess():
 
 def computer_guess():
 
-    ships_remaining = 5
-    ships_remaining = ships_remaining - 1
+    global comp_ships_remaining
     
     comp_guess_row = randint(0, board_size - 1)
     comp_guess_col = randint(0, board_size - 1)
-    
-    global guessed_previously
-    guessed_previously = []
 
     current_guess = [comp_guess_row, comp_guess_col]
-    
-    while current_guess in guessed_previously:
-        print("PC try again")
-    
-    print(f"Computer has guessed Row: {comp_guess_row}, Column: {comp_guess_col}")
-    if comp_guess_row == place[0] and comp_guess_col == place[1]:
-        print(f"WE TOOK A HIT!!! Our fleet has {ships_remaining} ships remaining. Keep battling!")
-        player_board[comp_guess_row][comp_guess_col] = '$'
-        guessed_previously.append([comp_guess_row, comp_guess_col])
-    else:
-        print("PHEW. Computer has guessed incorrectly.")
-        player_board[comp_guess_row][comp_guess_col] = 'X'
-        guessed_previously.append([comp_guess_row, comp_guess_col])
-    nxt_round = input("Press any key to move on to the next round: ")
-    print(guessed_previously)
-    next_round()
 
+    if current_guess not in guessed_previously:
+        print(f"Computer has guessed Row: {comp_guess_row}, Column: {comp_guess_col}")
+        if comp_guess_row == place[0] and comp_guess_col == place[1]:
+            comp_ships_remaining -= 1
+            print(f"WE TOOK A HIT!!! Our fleet has {comp_ships_remaining} ships remaining. Keep battling!")
+            player_board[comp_guess_row][comp_guess_col] = '$'
+            guessed_previously.append([comp_guess_row, comp_guess_col])
+            nxt_round = input("Press any key to move on to the next round: ")
+            return nxt_round
+        else:
+            print("PHEW. Computer has guessed incorrectly.")
+            player_board[comp_guess_row][comp_guess_col] = 'X'
+            guessed_previously.append([comp_guess_row, comp_guess_col])
+            nxt_round = input("Press any key to move on to the next round: ")
+            return nxt_round
+    else:
+        computer_guess()
     
 def next_round():
     print("+" * 35)
@@ -128,8 +130,8 @@ def next_round():
     print(f"{player_name}'s Board: ")
     print_board(player_board)
     print("+" * 35)
-    player_guess()
-    computer_guess()
+    # player_guess()
+    # computer_guess()
     
 def start_game():
 
@@ -163,9 +165,15 @@ def main():
     print(f"{player_name}'s Board: ")
     print_board(player_board)
     print("+" * 35)
-    player_guess()
-    computer_guess()
-    next_round()
+
+    while player_ships_remaining > 0 and comp_ships_remaining > 0:
+        player_guess()
+        computer_guess()
+        next_round()
+    if player_ships_remaining <= 0:
+        print("GAME OVER. YOU WIN")
+    elif comp_ships_remaining <= 0:
+        print("GAME OVER. COMPUTER WINS")
+    
 
 main()
-
