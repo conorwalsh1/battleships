@@ -98,15 +98,26 @@ def computer_guess():
     
     comp_guess_row = randint(0, board_size - 1)
     comp_guess_col = randint(0, board_size - 1)
+    
+    global guessed_previously
+    guessed_previously = []
 
+    current_guess = [comp_guess_row, comp_guess_col]
+    
+    while current_guess in guessed_previously:
+        print("PC try again")
+    
     print(f"Computer has guessed Row: {comp_guess_row}, Column: {comp_guess_col}")
     if comp_guess_row == place[0] and comp_guess_col == place[1]:
         print(f"WE TOOK A HIT!!! Our fleet has {ships_remaining} ships remaining. Keep battling!")
         player_board[comp_guess_row][comp_guess_col] = '$'
+        guessed_previously.append([comp_guess_row, comp_guess_col])
     else:
         print("PHEW. Computer has guessed incorrectly.")
         player_board[comp_guess_row][comp_guess_col] = 'X'
+        guessed_previously.append([comp_guess_row, comp_guess_col])
     nxt_round = input("Press any key to move on to the next round: ")
+    print(guessed_previously)
     next_round()
 
     
@@ -123,9 +134,9 @@ def next_round():
 def start_game():
 
     global num_ships
-    num_ships = 5
+    num_ships = 2
     global board_size
-    board_size = 5
+    board_size = 2
     global player_name
 
     print("Welcome to Battleships. Are you ready to go to war? Enlist below if you are.")
