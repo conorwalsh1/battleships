@@ -1,6 +1,7 @@
 from random import randint
 
 guessed_previously = []
+ships_placed = []
 player_ships_remaining = 2
 comp_ships_remaining = 2
 
@@ -10,7 +11,7 @@ comp_ships_remaining = 2
 def create_board():
 
     global board
-    board = []    
+    board = []   
 
     for i in range(board_size):
         board.append(["O"] * board_size)
@@ -19,7 +20,11 @@ def create_board():
         place = get_random_coordinates(board_size)
         x = place[0]
         y = place[1]
-        board[x][y] = 'O'
+        ships_created = [x, y]
+        if ships_created not in ships_placed:
+            board[x][y] = 'X'
+            ships_placed.append([x, y])
+            print(ships_placed)
 
     return board
 
@@ -38,7 +43,11 @@ def create_player_board():
         place = get_random_coordinates(board_size)
         x = place[0]
         y = place[1]
-        player_board[x][y] = '@'
+        ships_created = [x, y]
+        if ships_created not in ships_placed:
+            player_board[x][y] = '@'
+            ships_placed.append([x, y])
+            print(ships_placed)
 
     return player_board
 
@@ -62,7 +71,7 @@ def player_guess():
     guess_row = None
     while True:
         print(f"Please choose a number between 0 and {board_size - 1}")
-        guess_row = input("Guess Row: ")
+        guess_row = input("Guess Row:\n")
         if guess_row.isdigit():
             guess_row = int(guess_row)
             if guess_row > 4 or guess_row < 0:
@@ -74,7 +83,7 @@ def player_guess():
     guess_col = None
     while True:
         print(f"Please choose a number between 0 and {board_size - 1}")
-        guess_col = input("Guess Column: ")
+        guess_col = input("Guess Column:\n")
         print("+" * 35)
         if guess_col.isdigit():
             guess_col = int(guess_col)
@@ -140,14 +149,14 @@ def next_round():
 def start_game():
 
     global num_ships
-    num_ships = 2
+    num_ships = 3
     global board_size
-    board_size = 2
+    board_size = 3
     global player_name
     global comp_ships_remaining
-    comp_ships_remaining = 2
+    comp_ships_remaining = 3
     global player_ships_remaining
-    player_ships_remaining = 2
+    player_ships_remaining = 3
 
     print("Welcome to Battleships. Are you ready to go to war? Enlist below if you are.")
     player_name = input("Enter your name soldier: \n")
@@ -175,14 +184,6 @@ def main():
     print_board(player_board)
     print("+" * 35)
 
-    # while player_ships_remaining > 0 and comp_ships_remaining > 0:
-    #     player_guess()
-    #     computer_guess()
-    #     next_round()
-    # if player_ships_remaining <= 0:
-    #     print("GAME OVER. YOU WIN")
-    # elif comp_ships_remaining <= 0:
-    #     print("GAME OVER. COMPUTER WINS")
     while True:
         if player_ships_remaining > 0 and comp_ships_remaining > 0:
             player_guess()
