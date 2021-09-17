@@ -81,58 +81,9 @@ This website was built using a Macbook Pro 13".
 
 ## Testing
 
-The W3C Markup Validator, W3C CSS Validator and JSHint were used to validate every page of the project to ensure there were no syntax errors in the project.
-    <h2 align="center">HTML Validator Results</h2>
--   [W3C Markup Validator](https://validator.w3.org/#validate_by_input) 
-    ![HTML Validator Results](assets/images/ceart-html-test.png)
-    <h2 align="center">CSS Validator Results</h2>
--   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
-    ![CSS Validator Results](assets/images/ceart-css-test.png)
-    <h2 align="center">JavaScript Validator Results</h2>    
--   [JSHint](https://https://jshint.com/)
-    ![JavaScript Validator Results](assets/images/ceart-js-test.png)
 
-### Testing User Stories from User Experience (UX) Section
 
--   #### First Time Visitor Goals
-
-    1. As a First Time Visitor, I want to easily understand the main purpose of the site..
-
-        1. Upon entering the site, users are automatically greeted with a clean unobstructed interface which contains the name of the site and a welcome message explaining the sites purpose.
-        2. The rules of the quiz are explained clearly.
-        3. The user is shown a large "Start Quiz" button which calls the function to start the quiz
-
-    2. As a First Time Visitor, I want to be able to easily be able to navigate through the quiz without any confusion.
-
-        1. The site has been designed to be fluid and never to entrap the user. Once the quiz starts, the user will have an option of four different buttons to select, all of which can be pressed for each question. The 'Next' button guides the user through the quiz until they have answered all questions
-        2. The user will be alerted with a closing message once all questions have been answered.
-
-    3. As a First Time Visitor, I want to have an experience that is meaningful and informative.
-
-        1. The quiz has been set up in a way that the questions are not difficult but not easy either. As a first time visitor, I want to feel stimulated enough that I would like to return again.
-        2. The encouraging language in the opening and closing messages is scripted in a way that aims to provoke a positive emotional reaction in the site user.
-
--   #### Returning Visitor Goals
-
-    1. As a Returning Visitor, I want to challenge the score I received on the previous occasion.
-
-        1. The tally for correct and incorrect score will always appear at the top of the screen. It gives the visitor a way of tracking their score so they have something to compare it against when they return.
-        2. The score shows both correct and incorrect so the visitor has two ways of challenging themselves.
-
-    2. As a Returning Visitor, I want to be able to complete the quiz without any distractions
-
-        1. The quiz is set up in a way that the visitors eyes are only drawn to the quiz area which is contained in a black box with brown border.
-        2. There is nothing included on the site that isn't necessary which promotes a concentrated learning environment.
-
--   #### Frequent User Goals
-
-    1. As a Frequent User, I want to improve my Irish language skills.
-
-        1. The site has a familiar layout which is truly unique. This allows the site visitor to focus purely on learning Irish through the quiz.
-
-    2. As a Frequent User, I want to check to see if there are any changes to either the questions in terms of topics or difficulties.
-
-        1. If any changes were to be implemented either through topics or question difficulties, the user would be notified in the welcome message so the landing page acts as a notice board for any changes on site.
+### 
 
 ### Further Testing
 
@@ -196,39 +147,10 @@ Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-re
 
 ### Code
 
--   [Digital Ocean](https://www.digitalocean.com/community/tutorials/how-to-add-a-favicon-to-your-website-with-html) : I copied the template code on this site so that my favicon would work correctly.
-
--   [Stack Overflow](https://stackoverflow.com/questions/2573979/force-page-reload-with-html-anchors-html-js) : I wanted to force a page reload once the logo was clicked and I acheived this using information here.
-
--   [Stack Overflow](https://stackoverflow.com/questions/12194435/cannot-set-property-display-of-undefined) : I came across a bug stating "Cannot set display of undefined" in Dev tools. I followed an approach here to eradicate the issue.
-
--   [Stack Overflow](https://stackoverflow.com/questions/22549032/illegal-use-of-break-statement-javascript) : I was trying to use the "break" statement which I thought would end the loop generating quiz questions but it said "illegal use of break". I then researched online and found that the "return" statement was a better fit as it would break the execution flow of the function and that break was used more for 'for' or 'while' loops.
-
--   [Stack Overflow](https://stackoverflow.com/questions/3304014/how-to-interpolate-variables-in-strings-in-javascript-without-concatenation) : I used this resource to figure out how to interpolate the final score into the string of if statements that appear in the generateNextQuestion function.
-
--   [YouTube](https://www.youtube.com/watch?v=MLfAW55_4cY) : I followed the first part of this tutorial to acheive the desired effect of a hover olay for my buttons.
-
--   [W3Schools](https://www.w3schools.com/cssref/pr_border-style.asp) : I used this site as I was looking to remove a border style that was appearing dotted when I just wanted a simple plain border.
-
--   [W3Schools](https://www.w3schools.com/jsref/prop_pushbutton_disabled.asp) : I used this site as I was looking for a way to stop the correct answer button from being clicked more than once which was incrementing the score infinitely based on how many time the user clicked the same correct answer.
-
-- My functions incrementScore and incrementIncorrectScore were taken from the 'Love Maths' Code Institute walkthrough, I replaced the Id's with my own.
 
 ### Problems Overcame
 
--   I found Javascript quite tough initially. When I started the project I relied heavily on a Youtube tutorial (https://www.youtube.com/watch?v=riDzcEQbX6k&t=1374s) which created a multiple choice quiz exactly how I wanted it to look but I could not explain how any of the Javascript functions worked. I spoke with my tutor Maria who advised that the Javascript code must be custom written. I deleted the project and went back to the start of the Javascript course and I went through the modules again, this time bookmarking parts I realised I could use in my own project and thereby gaining a better understanding of JS. By the time I came through the JS module, I felt much more prepared and I started writing my own custom JS. You will be able to see in the commits where I deleted the JS code and started afresh.
 
--   One function I had a lot of trouble with was the correctAnswer function. I spent a number of days working different angles but I was delighted to get it working in the end. What I figured out was that I was missing was the event parameter within the function itself.
-
--   I kept receiving an error once the quiz came to a close, saying :
-
-    TypeError: Cannot read property 'question' of undefined
-       at generateQuestion (script.js:29)
-       at HTMLButtonElement.generateNextQuestion (script.js:57)
-
-    I kept looking through the course material and found the "break" statement which I thought would end the loop. I tried but it still wouldn't work. I then researched online and found that the "return" statement was a better fit as it would break the execution flow of the function and that break was used more for 'for' or 'while' loops.
-
--   When the site was being tested, a user brought to my attention that the answer buttons could be clicked infinitely, which was an issue as the correct score could be incremented above ten which was how many questions and possible correct answers were present. I went about creating a function to resolve this issue by creating one function that disabled the buttons once the correct answer was clicked and another function that reactivated the buttons once the 'Next' button was clicked. I was happy to just block the user from clicking the correct answer more than once as the quiz is built for children, I want them to feel encouraged to try again to find out what the correct answer is, even if by process of elimination.
 
 
 
