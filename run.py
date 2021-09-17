@@ -4,8 +4,8 @@ comp_guessed_previously = []
 player_guessed_previously = []
 player_ships_placed = []
 computer_ships_placed = []
-player_ships_remaining = 2
-comp_ships_remaining = 2
+player_ships_remaining = 5
+comp_ships_remaining = 5
 
 
 # Create Computer Board
@@ -100,7 +100,7 @@ def player_guess():
         guess_row = input("Guess Row:\n")
         if guess_row.isdigit():
             guess_row = int(guess_row)
-            if guess_row > board_size or guess_row < 0:
+            if guess_row > board_size - 1 or guess_row < 0:
                 continue
             break
         else:
@@ -113,7 +113,7 @@ def player_guess():
         print("+" * 35)
         if guess_col.isdigit():
             guess_col = int(guess_col)
-            if guess_col > board_size or guess_col < 0:
+            if guess_col > board_size - 1 or guess_col < 0:
                 continue
             break
         else:
@@ -153,7 +153,7 @@ def computer_guess():
         if current_guess in player_ships_placed:
             global player_ships_remaining
             player_ships_remaining -= 1
-            print("WE TOOK A HIT!!!")
+            print("YOU TOOK A HIT!!!")
             print(f"Our fleet has {player_ships_remaining} ship remaining.")
             player_board[comp_guess_row][comp_guess_col] = '$'
             comp_guessed_previously.append([comp_guess_row, comp_guess_col])
@@ -230,10 +230,10 @@ def main():
             computer_guess()
             next_round()
         elif player_ships_remaining <= 0:
-            print("GAME OVER. YOU WIN")
+            print("GAME OVER. COMPUTER WINS")
             break
         else:
-            print("GAME OVER. COMPUTER WINS")
+            print("GAME OVER. YOU WIN")
             break
 
 
