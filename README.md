@@ -69,7 +69,8 @@ The game continues until one of the players sinks all of the others battleships.
 - Player allowed to set board size and amounts of ships.
 
 ## Data Model
- ******
+ 
+ I decided to use a series of f
 
 ### Languages Used
 

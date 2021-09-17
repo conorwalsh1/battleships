@@ -112,8 +112,8 @@ def computer_guess():
     current_guess = [comp_guess_row, comp_guess_col]
 
     if current_guess not in guessed_previously:
-        print(f"Computer has guessed Row: {comp_guess_row},")
-        print(f"{comp_guess_row}, Column: {comp_guess_col}")
+        print("Computer has guessed:")
+        print(f"Row: {comp_guess_row}, Column: {comp_guess_col}")
         if comp_guess_row == place[0] and comp_guess_col == place[1]:
             global player_ships_remaining
             player_ships_remaining -= 1
