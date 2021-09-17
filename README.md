@@ -1,10 +1,10 @@
 <h1 align="center">Battleships Game</h1>
 
-![Responsive Test](assets/images/ceart-responsive.png)********
+![Responsive Test](assets/images/battle-responsive.png)
 
 ---
 
-[Live Website](https://conorwalsh1.github.io/ceart-kids-quiz/)******
+[Live Website](https://battleships-conor.herokuapp.com/)
 
 [Github Repository](https://github.com/conorwalsh1/battleships)
 
@@ -20,7 +20,7 @@ This website was built using a Macbook Pro 13".
 
 ## How To Play
 
-Battleships is based on the classic pen-and-paper game. You can read more about it here on Wikipedia.
+Battleships is based on the classic pen-and-paper game. You can read more about it here on [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)battleships)
 
 The player is prompted to enter their name, after which instructions are given and two boards are generated.
 
@@ -32,9 +32,15 @@ Each new round allows player and computer to make a guess.
 
 The game continues until one of the players sinks all of the others battleships.
     
-## Features
+## Features:
+
+- Start up message that stores players name.
+
+![Responsive Test](assets/images/battle-starting-game.png)
 
 - Random board generation.
+
+![Responsive Test](assets/images/battle-boards.png)
 
 - Ships are randomly placed on both boards at the start of each round.
 
@@ -42,11 +48,15 @@ The game continues until one of the players sinks all of the others battleships.
 
 - Accepts user input.
 
+![Responsive Test](assets/images/battle-hits.png)
+
 - Play against a computer.
 
 - Alerts player when each ship has been hit how many are remaining on the board.
 
 - Input validation - Players must enter a number within range of the board size and it must be a number, not a letter.
+
+![Responsive Test](assets/images/battle-invalid-data-input.png)
 
 - Different messages generate at the end of the game, depending on if players wins or loses.
 
