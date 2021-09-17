@@ -24,7 +24,6 @@ def create_board():
         if ships_created not in ships_placed:
             board[x][y] = 'X'
             ships_placed.append([x, y])
-            print(ships_placed)
 
     return board
 
@@ -161,9 +160,11 @@ def start_game():
     print("Welcome to Battleships. Are you ready to go to war? Enlist below if you are.")
     player_name = input("Enter your name soldier: \n")
     print("+" * 35)
-    print(f"Glad to have you aboard {player_name}. The board size is {board_size} x {board_size}, you have {num_ships} ships to protect and {num_ships} ships to eliminate.")
-    print(f"When you are prompted, enter which row and then which column you would like to strike.\nThe first coordinate on the board will be row: 0, column: 0.")
-    print("The last coordinate on the board will be row: {board_size - 1}, column: {board_size - 1}.")
+    print(f"Glad to have you aboard {player_name}. The board size is {board_size} x {board_size}.") 
+    print(f"You have {num_ships} ships to protect and {num_ships} ships to eliminate.")
+    print(f"When prompted, enter which row and then which column you would like to strike.")
+    print("The first coordinate on the board will be row: 0, column: 0.")
+    print(f"The last coordinate on the board will be row: {board_size - 1}, column: {board_size - 1}.")
     print("Best of luck comrade, you're going to need it out there.")
     print("Map Legend:")
     print("O = Unchecked Spaces")
