@@ -124,7 +124,7 @@ def player_guess():
             global comp_ships_remaining
             comp_ships_remaining -= 1
             print("BOOM! Good hit!!!")
-            print(f"Computer has {comp_ships_remaining} ships remaining.")
+            print(f"Computer has {comp_ships_remaining} ship remaining.")
             board[guess_row][guess_col] = '$'
             player_guessed_previously.append([guess_row, guess_col])
 
@@ -154,7 +154,7 @@ def computer_guess():
             global player_ships_remaining
             player_ships_remaining -= 1
             print("WE TOOK A HIT!!!")
-            print(f"Our fleet has {player_ships_remaining} ships remaining.")
+            print(f"Our fleet has {player_ships_remaining} ship remaining.")
             player_board[comp_guess_row][comp_guess_col] = '$'
             comp_guessed_previously.append([comp_guess_row, comp_guess_col])
             nxt_round = input("Press any key to move on to the next round: ")

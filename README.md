@@ -70,10 +70,9 @@ The game continues until one of the players sinks all of the others battleships.
 
 ## Data Model
  
- I decided to use a series of arrays
+ I decided to use a series of arrays as a data model for this project. I used arrays to store the coordinates on the board. I also used arrays to store the player and computer guesses which I utilised in different areas for example when checking for invalid inputs, I was able to check against what the computer had guessed already to make sure it chose a new coordinate each time.
 
- Each board array coordinates
- Arrays to hold guesses and ships
+ I also used arrays to hold the coordinates of the ships which the players then guessed with row and column. When the total amount of ships was brought to zero, a winner was then decided, be it player or computer.
 
 ### Languages Used
 
