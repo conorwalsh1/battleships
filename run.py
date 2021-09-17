@@ -2,8 +2,8 @@ from random import randint
 
 guessed_previously = []
 ships_placed = []
-player_ships_remaining = 2
-comp_ships_remaining = 2
+player_ships_remaining = 5
+comp_ships_remaining = 5
 
 
 # create boards
@@ -22,7 +22,7 @@ def create_board():
         y = place[1]
         ships_created = [x, y]
         if ships_created not in ships_placed:
-            board[x][y] = 'X'
+            board[x][y] = 'O'
             ships_placed.append([x, y])
 
     return board
@@ -46,7 +46,6 @@ def create_player_board():
         if ships_created not in ships_placed:
             player_board[x][y] = '@'
             ships_placed.append([x, y])
-            print(ships_placed)
 
     return player_board
 
@@ -148,14 +147,14 @@ def next_round():
 def start_game():
 
     global num_ships
-    num_ships = 3
+    num_ships = 5
     global board_size
-    board_size = 3
+    board_size = 5
     global player_name
     global comp_ships_remaining
-    comp_ships_remaining = 3
+    comp_ships_remaining = 5
     global player_ships_remaining
-    player_ships_remaining = 3
+    player_ships_remaining = 5
 
     print("Welcome to Battleships. Are you ready to go to war? Enlist below if you are.")
     player_name = input("Enter your name soldier: \n")

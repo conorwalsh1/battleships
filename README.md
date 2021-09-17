@@ -1,12 +1,12 @@
 <h1 align="center">Battleships Game</h1>
 
-![Responsive Test](assets/images/ceart-responsive.png)
+![Responsive Test](assets/images/ceart-responsive.png)********
 
 ---
 
-[Live Website](https://conorwalsh1.github.io/ceart-kids-quiz/)
+[Live Website](https://conorwalsh1.github.io/ceart-kids-quiz/)******
 
-[Github Repository](https://github.com/conorwalsh1/ceart-kids-quiz)
+[Github Repository](https://github.com/conorwalsh1/battleships)
 
 ---
 
@@ -38,7 +38,7 @@ The game continues until one of the players sinks all of the others battleships.
 
 - Ships are randomly placed on both boards at the start of each round.
 
--  Computer ships hidden from player.
+- Computer ships hidden from player.
 
 - Accepts user input.
 
@@ -52,13 +52,14 @@ The game continues until one of the players sinks all of the others battleships.
 
 ## Features To Add In Future
 
--   Larger ships that are bigger than just 1x1 coordinate.
+- Larger ships that are bigger than just 1x1 coordinate.
 
 - Player allowed to decide where their ships are placed.
 
 - Player allowed to set board size and amounts of ships.
 
 ## Data Model
+ ******
 
 ### Languages Used
 
@@ -108,29 +109,6 @@ Deployment steps:
 
 -   All other content was written by Conor Walsh.
 
-
 ### Acknowledgements
 
 -   I would like to thank my mentor Maria Hynes for guiding me along the right path throughout our mentoring sessions. There were times I struggled with getting the way I wanted the code to look out of my head and onto the screen, but she gave me great motivation to persevere and I am very grateful for her assistance. I would also like to thank the tutors that helped me along the way.
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
-
-https://www.youtube.com/watch?v=waTN4mBWMtA - Board
