@@ -20,7 +20,7 @@ This website was built using a Macbook Pro 13".
 
 ## How To Play
 
-Battleships is based on the classic pen-and-paper game. You can read more about it here on [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)battleships)
+Battleships is a game of chance where you aim to find all of your opponents ships before they find all of yours. You can read more about it here on [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)battleships)
 
 The player is prompted to enter their name, after which instructions are given and two boards are generated.
 
@@ -93,6 +93,12 @@ I have manually tested the project by doing the following:
 - Each new round was producing a brand new board with new coordinates as I was running the create_board function in my next_round function as opposed to printing the board.
 
 - The game would not come to a close as I had entered the next_round function an extra time by mistake, thus causing new rounds to constantly be generated.
+
+- The game was only storing one ship at a time, even though it would say there was three ships on the board. I found out through testing that I had not been storing the ships in a correct array, so the checks I was doing would only search for one coordinate at a time instead of two together. I created an if statement that would keep appending coordinates to the array, so as long as the same coordinates would not be generated twice, in which case it would stop appending.
+
+- I encountered multiple errors in the problems section beside the terminal. The errors showing up were: lines too long, not enough whitespace between lines and extra white space at the end of lines.
+
+- Another error thrown up was that i (which I had used in a for statement) had been created but not used, so I switched it out for a '_' instead.
 
 ### Remaining Bugs
 
