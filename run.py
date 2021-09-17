@@ -168,6 +168,8 @@ def computer_guess():
     else:
         computer_guess()
 
+# Next Round Function
+
 
 def next_round():
     print("+" * 35)
@@ -183,14 +185,14 @@ def next_round():
 def start_game():
 
     global num_ships
-    num_ships = 3
+    num_ships = 5
     global board_size
-    board_size = 3
+    board_size = 5
     global player_name
     global comp_ships_remaining
-    comp_ships_remaining = 3
+    comp_ships_remaining = 5
     global player_ships_remaining
-    player_ships_remaining = 3
+    player_ships_remaining = 5
 
     print("Welcome to Battleships.")
     print("Are you ready to go to war? Enlist below if you are.")
