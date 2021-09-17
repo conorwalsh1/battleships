@@ -70,7 +70,10 @@ The game continues until one of the players sinks all of the others battleships.
 
 ## Data Model
  
- I decided to use a series of f
+ I decided to use a series of arrays
+
+ Each board array coordinates
+ Arrays to hold guesses and ships
 
 ### Languages Used
 

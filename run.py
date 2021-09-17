@@ -1,6 +1,6 @@
 from random import randint
 
-computer_guessed_previously = []
+comp_guessed_previously = []
 player_guessed_previously = []
 player_ships_placed = []
 computer_ships_placed = []
@@ -38,7 +38,6 @@ def create_board():
                 if ships_created not in computer_ships_placed:
                     computer_ships_placed.append([x, y])
                     ship_there = False
-    
     return board
 
 # Create Player Board
@@ -71,8 +70,6 @@ def create_player_board():
                     player_board[x][y] = '@'
                     player_ships_placed.append([x, y])
                     ship_there = False
-
-
     return player_board
 
 # Print Boards
@@ -123,9 +120,7 @@ def player_guess():
             continue
     guess_location = [guess_row, guess_col]
     if guess_location not in player_guessed_previously:
-    
         if guess_location in computer_ships_placed:
-            
             global comp_ships_remaining
             comp_ships_remaining -= 1
             print("BOOM! Good hit!!!")
@@ -152,7 +147,7 @@ def computer_guess():
 
     current_guess = [comp_guess_row, comp_guess_col]
 
-    if current_guess not in computer_guessed_previously:
+    if current_guess not in comp_guessed_previously:
         print("Computer has guessed:")
         print(f"Row: {comp_guess_row}, Column: {comp_guess_col}")
         if current_guess in player_ships_placed:
@@ -161,13 +156,13 @@ def computer_guess():
             print("WE TOOK A HIT!!!")
             print(f"Our fleet has {player_ships_remaining} ships remaining.")
             player_board[comp_guess_row][comp_guess_col] = '$'
-            computer_guessed_previously.append([comp_guess_row, comp_guess_col])
+            comp_guessed_previously.append([comp_guess_row, comp_guess_col])
             nxt_round = input("Press any key to move on to the next round: ")
             return nxt_round
         else:
             print("PHEW. Computer has guessed incorrectly.")
             player_board[comp_guess_row][comp_guess_col] = 'X'
-            computer_guessed_previously.append([comp_guess_row, comp_guess_col])
+            comp_guessed_previously.append([comp_guess_row, comp_guess_col])
             nxt_round = input("Press any key to move on to the next round: ")
             return nxt_round
     else:
@@ -220,15 +215,12 @@ def main():
     start_game()
     get_random_coordinates(board_size)
     player_board = create_player_board()
-    print(player_ships_placed)
     computer_board = create_board()
-    print(computer_ships_placed)
     print("Computer's Board: ")
     print_board(computer_board)
     print(f"{player_name}'s Board: ")
     print_board(player_board)
     print("+" * 35)
-
 
     while True:
         if player_ships_remaining > 0 and comp_ships_remaining > 0:
